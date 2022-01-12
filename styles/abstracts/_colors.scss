@@ -1,0 +1,45 @@
+/*
+    List of All Colors
+    (sorted using: https://elektrobild.org/tools/sort-colors)
+*/
+$white-pure: #FFFFFF;
+$neutral-light-gray: #F4F4F4;
+$silver-chalice: #ABABAB;
+$turqoise: #00E0C1;
+$wisteria: #CDA1E3;
+$sunglow: #FFCA00;
+$keppel: #00C2A8;
+$gold-metallic: #DBAD00;
+$jet: #2C2C2C;
+$raisin-black: #1B1C2C;
+$space-cadet: #151949;
+
+// FWV Brand Colors
+$fwv-1: $space-cadet;
+$fwv-2: $sunglow;
+$fwv-3: $turqoise;
+$fwv-4: $white-pure;
+$fwv-5: $silver-chalice;
+
+// Mapped Color Names (use these in components)
+$white: $white-pure;
+$black: $raisin-black;
+
+$color-primary: $fwv-1;
+$accent-primary: $fwv-2;
+$accent-secondary: $fwv-3;
+
+$text-primary: $fwv-1;
+$text-secondary: $jet;
+$text-tertiary: $fwv-4;
+
+$bg-light: $fwv-4;
+$bg-dark: $raisin-black;
+
+$btn-primary: $fwv-2;
+$btn-secondary: $fwv-3;
+$btn-tertiary: $fwv-4;
+
+$btn-primary-hover: $gold-metallic;
+$btn-secondary-hover: $keppel;
+$btn-tertiary-hover: $fwv-4;

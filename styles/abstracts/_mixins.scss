@@ -1,0 +1,103 @@
+@use 'breakpoints' as b;
+
+
+@mixin min-width($breakpoint) {
+	/*
+		Min-width media breakpoint. Select from a dictionary of
+		breakpoints as defined in breakpoints.scss.
+		Example: @include min-width(md);
+	*/
+	
+	@if map-has-key($map: b.$custom-breakpoints, $key: $breakpoint) {
+
+		@media (min-width: map-get(b.$custom-breakpoints, $breakpoint)) {
+			@content;
+		}
+	}
+	@else {
+		@warn "No breakpoint value for key `#{$breakpoint}`. Available breakpoints are: #{map-keys(b.$custom-breakpoints)}.";
+	}
+}
+
+@mixin max-width($breakpoint) {
+		/*
+			Max-width media breakpoint. Select from a dictionary of
+			breakpoints as defined in breakpoints.scss.
+			Example: @include max-width(md);
+		*/
+	
+	@if map-has-key($map: b.$custom-breakpoints, $key: $breakpoint) {
+
+		@media (max-width: map-get(b.$custom-breakpoints, $breakpoint)) {
+			@content;
+		}
+	}
+	@else {
+		@warn "No breakpoint value for key `#{$breakpoint}`. Available breakpoints are: #{map-keys(b.$custom-breakpoints)}.";
+	}
+}
+
+
+@mixin btn-pill($color, $background-color, $color-hover, $background-color-hover) {
+	/*
+		@todo: Add responsive styling
+	*/
+	
+	@if $color and $background-color and $color-hover and $background-color-hover {
+		//padding: 0.75rem 2.625rem;
+		padding: 0.75rem 2.98rem;
+		display: inline-block;
+		background-color: $background-color;
+		outline: if($background-color == transparent, 2px solid $color, none);
+		text-decoration: none;
+		border-radius: 44px;
+		cursor: pointer;
+		transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+		&:hover {
+			background-color: $background-color-hover;
+		}
+
+		&:hover span {
+			color: $color-hover;
+		}
+
+		& span {
+			font-family: 'poppins-semibold';
+			font-size: 1rem;
+			text-transform: uppercase;
+			letter-spacing: 0.2rem;
+			line-height: 1.25rem;
+			color: $color;
+			transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+		}
+	}
+
+	@else {
+		@error "No compatible style. Please check your syntax -> @include btn-pill($color, $background-color, $color-hover, $background-color-hover)."
+	}
+};
+
+
+@mixin centered() {
+	/*
+		Used to perfect center elements with
+		respect to its closest parent element
+		with "position: relative".
+	*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin link-colors($link, $visited, $hover, $active) {
+	/*
+		Update link colors and their various states by
+		passing 4 color values to this mixin.
+	*/
+  color: $link;
+  &:visited  { color: $visited; }
+  &:hover    { color: $hover;   }
+  &:active   { color: $active;  }
+}
